@@ -1,10 +1,10 @@
 import numpy as np
-import pickle
+import joblib
 import streamlit as st
 from twilio.rest import Client
 
 # loading the saved model
-loaded_model = pickle.load(open('E:/Capstone Project/New folder/dt1.sav', 'rb'))
+loaded_model = joblib.load('dt1.joblib')
 
 # Twilio credentials
 account_sid = 'AC92b4c5e80eb832845a03464f67afbb8e'
@@ -13,7 +13,7 @@ client = Client(account_sid, auth_token)
 twilio_phone_number = '+17733581082'  # Twilio phone number
 
 # creating a function for Prediction
-def Heart_stroke_prediction(input_data,phone):
+def Heart_stroke_prediction(input_data, phone):
     input_data1 = [float(value) for value in input_data]
 
     # changing the input_data to a numpy array
